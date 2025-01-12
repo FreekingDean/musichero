@@ -1,0 +1,9 @@
+<% content_for :title, "New spotify platlist" %>
+
+<div class="md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">New spotify platlist</h1>
+
+  <%= render "form", spotify_platlist: @spotify_platlist %>
+
+  <%= link_to "Back to spotify platlists", spotify_platlists_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+</div>
