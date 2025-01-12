@@ -1,0 +1,2 @@
+module SpotifyPlaylistsHelper
+end
