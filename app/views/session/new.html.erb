@@ -1,20 +1,35 @@
 <!-- a nice authenticaiton page built with tailwind -->
-<div class="flex items-center justify-center h-screen bg-gray-200">
-  <div class="bg-white p-8 rounded shadow-md w-96">
-    <h2 class="text-2xl font-bold mb-8 text-center">Sign In</h2>
-    <%= form_with url: '/session' do |f| %>
-      <div class="mb-4">
-        <%= f.label :username, class: "block text-gray-700 text-sm font-bold mb-2" %>
-        <%= f.text_field :username, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-      </div>
-      <div class="mb-4">
-        <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
-        <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-      </div>
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="w-full max-w-md">
+    <div class="bg-white rounded-lg shadow-md px-8 py-6">
+      <h2 class="text-2xl font-semibold text-gray-900 text-center mb-6">Sign In</h2>
 
-      <div class="flex items-center justify-between">
-        <%= f.submit "Sign Up", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-      </div>
-    <% end %>
+      <%= form_with url: '/session', class: "space-y-6" do |f| %>
+        <% if flash[:error].present? %>
+          <div class="bg-red-50 text-red-500 p-4 rounded-md text-sm">
+            <%= flash[:error] %>
+          </div>
+        <% end %>
+
+        <div>
+          <%= f.label :username, class: "block text-sm font-medium text-gray-700 mb-2" %>
+          <%= f.text_field :username, 
+              class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+              placeholder: "Enter your username" %>
+        </div>
+
+        <div>
+          <%= f.label :password, class: "block text-sm font-medium text-gray-700 mb-2" %>
+          <%= f.password_field :password,
+              class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+              placeholder: "••••••••" %>
+        </div>
+
+        <div>
+          <%= f.submit "Sign In", 
+              class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

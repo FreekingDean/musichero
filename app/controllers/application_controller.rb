@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     return unless current_user.nil?
 
-    redirect_to new_user_session_path
+    redirect_to new_session_path
   end
 
   def current_user
