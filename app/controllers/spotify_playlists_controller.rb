@@ -25,7 +25,7 @@ class SpotifyPlaylistsController < ApplicationController
 
     respond_to do |format|
       if @spotify_playlist.save
-        format.html { redirect_to @spotify_playlist, notice: "Spotify playlist was successfully created." }
+        format.html { redirect_to tracks_path, notice: "Spotify playlist was successfully created." }
         format.json { render :show, status: :created, location: @spotify_playlist }
       else
         format.html { render :new, status: :unprocessable_entity }

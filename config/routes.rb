@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root "lidarr_instances#index"
+  resources :tracks, only: %i[index show update]
+  resources :session, only: %i[new create destroy]
+  resources :lidarr_instances
   resources :users
   resources :spotify_playlists
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

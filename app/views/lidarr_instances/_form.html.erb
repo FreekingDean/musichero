@@ -1,0 +1,54 @@
+<%= form_with(model: lidarr_instance, class: "contents") do |form| %>
+  <% if lidarr_instance.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(lidarr_instance.errors.count, "error") %> prohibited this lidarr_instance from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% lidarr_instance.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :host %>
+    <%= form.text_field :host, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lidarr_instance.errors[:host].none?, "border-red-400 focus:outline-red-600": lidarr_instance.errors[:host].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lidarr_instance.errors[:name].none?, "border-red-400 focus:outline-red-600": lidarr_instance.errors[:name].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :api_key %>
+    <%= form.text_field :api_key, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lidarr_instance.errors[:api_key].none?, "border-red-400 focus:outline-red-600": lidarr_instance.errors[:api_key].any?}] %>
+  </div>
+
+  <% unless lidarr_instance.new_record? %>
+    <div class="my-5">
+      <%= form.label :quality_profile_id %>
+      <%= form.number_field :quality_profile_id, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lidarr_instance.errors[:quality_profile_id].none?, "border-red-400 focus:outline-red-600": lidarr_instance.errors[:quality_profile_id].any?}] %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :metadata_profile_id %>
+      <%= form.number_field :metadata_profile_id, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lidarr_instance.errors[:metadata_profile_id].none?, "border-red-400 focus:outline-red-600": lidarr_instance.errors[:metadata_profile_id].any?}] %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :root_folder_path %>
+      <%= form.text_field :root_folder_path, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lidarr_instance.errors[:root_folder_path].none?, "border-red-400 focus:outline-red-600": lidarr_instance.errors[:root_folder_path].any?}] %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :tags %>
+      <%= form.text_field :tags, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": lidarr_instance.errors[:tags].none?, "border-red-400 focus:outline-red-600": lidarr_instance.errors[:tags].any?}] %>
+    </div>
+  <% end %>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

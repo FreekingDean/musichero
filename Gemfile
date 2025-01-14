@@ -10,8 +10,9 @@ gem "stimulus-rails"
 gem "tailwindcss-rails"
 gem "jbuilder"
 gem 'faraday'
+gem "pagy"
 
-gem "bcrypt", "~> 3.1.7"
+gem "bcrypt"
 
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -48,4 +49,3 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
-

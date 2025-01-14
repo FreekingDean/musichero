@@ -1,0 +1,20 @@
+<!-- a nice authenticaiton page built with tailwind -->
+<div class="flex items-center justify-center h-screen bg-gray-200">
+  <div class="bg-white p-8 rounded shadow-md w-96">
+    <h2 class="text-2xl font-bold mb-8 text-center">Sign In</h2>
+    <%= form_with url: '/session' do |f| %>
+      <div class="mb-4">
+        <%= f.label :username, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.text_field :username, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <%= f.submit "Sign Up", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+      </div>
+    <% end %>
+  </div>
+</div>
