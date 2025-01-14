@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "lidarr_instances#index"
+  root "tracks#index"
   resources :tracks, only: %i[index show update]
   resources :session, only: %i[new create destroy]
   resources :lidarr_instances
