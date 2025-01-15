@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
   end
+
+  def self.authenticate_roles(role, except: [])
+    before_action except: except do
+      redirect_to root_path unless current_user&.role == role.to_s
+    end
+  end
 end

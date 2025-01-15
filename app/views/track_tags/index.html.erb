@@ -1,0 +1,23 @@
+<% content_for :title, "Track tags" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Track tags</h1>
+  </div>
+
+  <div id="track_tags" class="min-w-full">
+    <h3 class="font-bold text-lg mt-4">Set tags</h3>
+    <% @set_track_tags.each do |tag| %>
+      <%= button_to tag.tag.name, track_track_tag_path(id: tag.id), method: :delete, class: "btn pill btn-#{ tag.tag.color }" %>
+    <% end %>
+    <div class="mt-4"></div>
+    <h3 class="font-bold text-lg mt-4">Available tags</h3>
+    <% @unset_track_tags.each do |tag| %>
+      <%= button_to tag.name, track_track_tags_path(track_tag: { track_id: @track, tag_id: tag }), method: :post, class: "py-2 px-4 shadow-md no-underline rounded-full bg-#{ tag.color } text-white font-sans font-semibold text-sm border-#{ tag.color } btn-primary hover:text-white hover:bg-#{ tag.color }-light focus:outline-none active:shadow-none mr-2" %>
+    <% end %>
+  </div>
+</div>

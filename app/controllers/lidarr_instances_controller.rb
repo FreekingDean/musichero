@@ -1,5 +1,6 @@
 class LidarrInstancesController < ApplicationController
   before_action :set_lidarr_instance, only: %i[ show edit update destroy ]
+  authenticate_roles :admin
 
   # GET /lidarr_instances or /lidarr_instances.json
   def index

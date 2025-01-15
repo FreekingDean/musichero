@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_14_032310) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_15_004030) do
   create_table "albums", force: :cascade do |t|
     t.string "name"
     t.string "spotify_id"
@@ -46,6 +46,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_14_032310) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "track_tags", force: :cascade do |t|
+    t.integer "track_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_track_tags_on_tag_id"
+    t.index ["track_id"], name: "index_track_tags_on_track_id"
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string "name"
     t.string "spotify_id"
@@ -64,5 +80,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_14_032310) do
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "track_tags", "tags"
+  add_foreign_key "track_tags", "tracks"
   add_foreign_key "tracks", "albums"
 end
